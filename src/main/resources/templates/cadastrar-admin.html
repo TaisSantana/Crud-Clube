@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: headerBlock">
+<style type="text/css"></style>
+</head>
+
+<body>
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">Home</li>
+			<li class="breadcrumb-item">Cadastro Administrador</li>
+		</ol>
+	</nav>
+
+	<div class="container col-sm-12 col-md-6 col-md-offset-2" >
+		<h3>Cadastrar Administrador</h3>
+		<form action="/salvarAdm" method="post" th:object="${admin}">
+			<input type="hidden" th:field="*{id}">
+			<div class="form-group">
+				<label for="nome">Login</label> 
+				<input type="text" class="form-control" id="login" placeholder="Login do Administrador" th:field="*{login}" required>
+			</div>
+			<div class="form-group">
+				<label for="nome">Senha</label> 
+				<input type="text" class="form-control" id="senha" placeholder="Senha" th:field="*{senha}" required>
+			</div>
+			<div th:if="${#fields.hasErrors('*')}">
+				<ul>
+					<li th:each="erro : ${#fields.errors('*')}" th:text="${erro}" class="alert-danger">
+				</ul>
+			</div>
+			<button type="submit" class="btn btn-primary">Salvar</button>
+			
+			
+		</form>
+	</div>
+
+</body>
+</html>

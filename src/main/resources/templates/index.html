@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="header :: headerBlock" ></div>
+
+<body>
+		<nav class="navbar navbar-expand-sm   navbar-light bg-warning">
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarTogglerDemo03"
+				aria-controls="navbarTogglerDemo03" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					<li class="nav-item"><a class="nav-link" href="/">Gerenciamento Clube <span class="sr-only">(current)</span>
+					</a></li>
+
+				</ul>
+				
+			</div>
+		</nav>
+
+	    <div class="container-fluid">
+	        <div class="row justify-content-center">
+
+	            <div class="col-lg-5 col-md-5 mbr-form">
+	
+	            	<b><div th:if="${mensagemErro}" th:text="${mensagemErro}"></div></b>
+	                <form action="/efetuarLogin" method="post" th:object="${adm}">
+	                    <div class="row">
+	                        <div class="col-lg-12 col-md-12 col-sm-12">
+	                            <h4 class="mbr-section-title mb-4 display-2"><strong>Login</strong></h4>
+	                        </div>
+	                        <div class="col-lg-12 col-md-12 col-sm-12">
+	                            <p class="mbr-text mbr-fonts-style mb-4 display-7">informe seu login e senha</p>
+	                        </div>
+	                        <div data-for="cpf" class="col-lg-12 col-md col-sm-12 form-group">
+	                            <input type="text" name="login" placeholder="Login" class="form-control" required>
+	                        </div>
+	                        <div class="col-lg-12 col-md col-sm-12 form-group" data-for="senha">
+	                            <input type="password" name="senha" placeholder="Senha" class="form-control" required>
+	                        </div>
+	                        <a href="/formCadastrarAdm">Não tem cadastro? Cadastre-se</a>
+	                        <button type="submit" class="btn btn-primary btn-sm w-100">Entrar</button>
+	                    </div>
+	                </form>
+	            </div>
+	        </div>
+	    </div>
+
+
+</body>
+</html>

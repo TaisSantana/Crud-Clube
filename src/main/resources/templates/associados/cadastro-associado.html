@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: headerBlock">
+<style type="text/css"></style>
+</head>
+
+<body>
+
+	<div th:replace="header :: navBar"></div>
+
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">Home</li>
+			<li class="breadcrumb-item">Cadastro</li>
+			<li class="breadcrumb-item active" aria-current="page"><a href="/exibirFormCadastrarAssociado">Cadastrar Associado</a></li>
+		</ol>
+	</nav>
+	
+	<div class="container col-sm-12 col-md-6 col-md-offset-2" >
+		<h3>Cadastrar Associados</h3>
+		<form action="/salvarAssociado" method="post" th:object="${associado}" enctype="multipart/form-data">
+			<input type="hidden" th:field="*{id}">
+			<div class="form-group">
+				<label for="nome">Nome</label> 
+				<input type="text" class="form-control" id="nome" placeholder="Nome do Associado" th:field="*{nome}">
+			</div>
+			<div class="form-group">
+				<label for="nome">Telefone</label> 
+				<input type="text" class="form-control" id="telefone" placeholder="Telefone do Associado" th:field="*{telefone}">
+			</div>
+
+			<div class="form-group">
+				<input type="radio" id="1" name="pagamentoEmDia" value="1">
+				<label for="sim">Sim</label><br>
+				<input type="radio" id="0" name="pagamentoEmDia" value="0">
+				<label for="nao">Não</label><br>
+			</div>
+					
+			<div th:if="${#fields.hasErrors('*')}">
+				<ul>
+					<li th:each="erro : ${#fields.errors('*')}" th:text="${erro}" class="alert-danger">
+				</ul>
+			</div>
+			<button type="submit" class="btn btn-primary">Salvar</button>
+			<hr/>
+			<a href="/listarAssociado" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Voltar para a lista de associados</a>
+			
+		</form>
+	</div>
+
+</body>
+</html>
